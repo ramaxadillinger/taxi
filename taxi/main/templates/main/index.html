@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+{% if request.user.is_authenticated and request.user.is_staff %}
+    {% if trips %}
+        {% for trip in trips %}
+            <div class="alert alert-warning mt-2">
+                <h3>{{ trip.phone }}</h3>
+                <p> {{ trip.destination }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>У нас нет записей!</p>
+    {% endif %}
+{% else %}
+    <p>Только администратор может видеть данные!</p>
+
+{% endif %}
+{% endblock %}

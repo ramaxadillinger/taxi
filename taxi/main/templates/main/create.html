@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+create a trip
+{% endblock %}
+
+{% block content %}
+    <h1>Создать поездку</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.phone }}<br>
+        {{ form.destination }}<br>
+        <button type="submit" class="btn btn-success">Добавить</button>
+        <span>{{ error }}</span>
+    </form>
+{% endblock %}
